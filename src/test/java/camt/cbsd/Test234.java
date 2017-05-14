@@ -29,6 +29,8 @@ import static org.hamcrest.Matchers.nullValue;
 /**
  * Created by goes__000 on 5/14/2017.
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class Test234 {
 
     @Autowired
