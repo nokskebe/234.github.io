@@ -1,4 +1,4 @@
-package camt.cbsd;
+package camt.cbsd.unitTest;
 
 //import camt.cbsd.dao.CourseDao;
 //import camt.cbsd.services.CourseServiceImpl;

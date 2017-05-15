@@ -1,4 +1,4 @@
-package camt.cbsd;
+package camt.cbsd.unitTest;
 
 import camt.cbsd.dao.StudentDao;
 import camt.cbsd.entity.Student;

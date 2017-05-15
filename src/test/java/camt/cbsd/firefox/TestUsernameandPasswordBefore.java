@@ -1,13 +1,13 @@
-package camt.cbsd.systemtest;
+package camt.cbsd.firefox;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Ranate on 14/5/2560.
@@ -21,9 +21,9 @@ public class TestUsernameandPasswordBefore {
 
     @Before
     public void setup(){
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getClassLoader().getResource("").getPath() + "/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver",
+                this.getClass().getClassLoader().getResource("").getPath() + "/geckodriver.exe");
+        driver = new FirefoxDriver();
         baseUrl = "http://localhost:4200";
     }
 

@@ -1,19 +1,20 @@
-package camt.cbsd.systemtest;
+package camt.cbsd.firefox;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Ranate on 14/5/2560.
  */
 
-public class TestLoginAdmin {
+public class TestLoginUser {
     private WebDriver driver;
     private String baseUrl;
 
@@ -21,21 +22,19 @@ public class TestLoginAdmin {
 
     @Before
     public void setup(){
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getClassLoader().getResource("").getPath() + "/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver",
+                this.getClass().getClassLoader().getResource("").getPath() + "/geckodriver.exe");
+        driver = new FirefoxDriver();
         baseUrl = "http://localhost:4200";
     }
 
     @Test
     public void TestUsernameandPasswordblank() {
         driver.get(baseUrl + "/login");
-        driver.findElement(By.id("username")).sendKeys("admin");
-        driver.findElement(By.id("password")).sendKeys("admin");
+        driver.findElement(By.id("username")).sendKeys("user");
+        driver.findElement(By.id("password")).sendKeys("user");
         driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
         assertTrue(isElementPresent(By.linkText("Course list")));
-        assertTrue(isElementPresent(By.linkText("Add Course")));
-// ERROR: Caught exception [unknown command []]
 
     }
 

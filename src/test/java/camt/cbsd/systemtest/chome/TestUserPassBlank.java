@@ -1,4 +1,4 @@
-package camt.cbsd.systemtest;
+package camt.cbsd.systemtest.chome;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,9 +13,10 @@ import static org.junit.Assert.assertTrue;
  * Created by Ranate on 14/5/2560.
  */
 
-public class TestLoginFail {
+public class TestUserPassBlank {
     private WebDriver driver;
     private String baseUrl;
+
 
 
     @Before
@@ -27,17 +28,11 @@ public class TestLoginFail {
     }
 
     @Test
-    public void loginPageLink() {
+    public void TestUsernameandPasswordblank() {
         driver.get(baseUrl + "/login");
-        driver.get(baseUrl + "/login?source=student");
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("asdasda");
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("asdasdasd");
         driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
-        assertEquals("Unauthorized", driver.findElement(By.cssSelector("div.alert.alert-error")).getText());
-
-
+        assertEquals("Username is required", driver.findElement(By.cssSelector("span.help-block")).getText());
+        assertEquals("Password is required", driver.findElement(By.xpath("//div[2]/span")).getText());
 
     }
 

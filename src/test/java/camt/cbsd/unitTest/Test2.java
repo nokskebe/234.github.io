@@ -1,4 +1,4 @@
-package camt.cbsd;
+package camt.cbsd.unitTest;
 
 import camt.cbsd.dao.StudentDao;
 import camt.cbsd.entity.Student;
@@ -48,7 +48,7 @@ public class Test2 {
         studentService = new StudentServiceImpl();
         studentService.setStudentDao(studentDao);
 
-        assertThat(studentService.getUsername("davy"), is(nullValue()));
+        assertThat(studentService.getUsername("Nonae"), is(nullValue()));
 
         assertThat(studentService.getUsername("admin").getStudentId(), is(student1.getStudentId()));
         assertThat(studentService.getUsername("admin").getName(), is(student1.getName()));

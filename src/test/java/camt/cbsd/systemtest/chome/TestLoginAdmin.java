@@ -1,4 +1,4 @@
-package camt.cbsd.systemtest;
+package camt.cbsd.systemtest.chome;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,10 +13,11 @@ import static org.junit.Assert.assertTrue;
  * Created by Ranate on 14/5/2560.
  */
 
-public class TestLoginpage {
+public class TestLoginAdmin {
     private WebDriver driver;
     private String baseUrl;
-    private StringBuffer verificationErrors = new StringBuffer();
+
+
 
     @Before
     public void setup(){
@@ -27,30 +28,17 @@ public class TestLoginpage {
     }
 
     @Test
-    public void loginPageTest() {
-        driver.get(baseUrl+"/login");
-        try {
-            assertEquals("List", driver.findElement(By.linkText("List")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertTrue(isElementPresent(By.linkText("View")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals("View", driver.findElement(By.linkText("View")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertTrue(isElementPresent(By.linkText("List")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+    public void TestUsernameandPasswordblank() {
+        driver.get(baseUrl + "/login");
+        driver.findElement(By.id("username")).sendKeys("admin");
+        driver.findElement(By.id("password")).sendKeys("admin");
+        driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
+        assertTrue(isElementPresent(By.linkText("Course list")));
+        assertTrue(isElementPresent(By.linkText("Add Course")));
+// ERROR: Caught exception [unknown command []]
 
     }
+
     private boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
@@ -60,4 +48,6 @@ public class TestLoginpage {
         }
     }
 
+
 }
+

@@ -1,4 +1,4 @@
-package camt.cbsd.systemtest;
+package camt.cbsd.systemtest.chome;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
  * Created by Ranate on 14/5/2560.
  */
 
-public class TestPasswordBlank {
+public class TestLoginUser {
     private WebDriver driver;
     private String baseUrl;
 
@@ -30,13 +30,21 @@ public class TestPasswordBlank {
     @Test
     public void TestUsernameandPasswordblank() {
         driver.get(baseUrl + "/login");
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("qweqwe");
+        driver.findElement(By.id("username")).sendKeys("user");
+        driver.findElement(By.id("password")).sendKeys("user");
         driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
-        assertEquals("Password is required", driver.findElement(By.cssSelector("span.help-block")).getText());
+        assertTrue(isElementPresent(By.linkText("Course list")));
 
     }
 
+    private boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 
 
 }

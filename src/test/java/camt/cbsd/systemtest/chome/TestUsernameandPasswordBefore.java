@@ -1,4 +1,4 @@
-package camt.cbsd.systemtest;
+package camt.cbsd.systemtest.chome;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,9 +13,10 @@ import static org.junit.Assert.assertTrue;
  * Created by Ranate on 14/5/2560.
  */
 
-public class Testlink {
+public class TestUsernameandPasswordBefore {
     private WebDriver driver;
     private String baseUrl;
+
 
 
     @Before
@@ -27,9 +28,12 @@ public class Testlink {
     }
 
     @Test
-    public void loginPageLink() {
-        driver.get(baseUrl + "/logins");
-        assertEquals("The resource you have asked is not in the server", driver.findElement(By.cssSelector("h2")).getText());
+    public void TestUsernameandPasswordblank() {
+        driver.get(baseUrl + "/login?source=student");
+        driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
+        assertEquals("Please login before use student page", driver.findElement(By.cssSelector("div.alert.alert-error")).getText());
+
+
 
     }
 
