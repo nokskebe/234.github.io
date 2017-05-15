@@ -33,5 +33,10 @@ public class StudentServiceImplTest {
         studentService=new StudentServiceImpl();
         studentService.setStudentDao(studentDao);
         assertThat(studentService.queryStudent("").get(1).getUser().getUsername(),is("user"));
+        //assertThat(studentService.queryStudent("").get(1).getUser().getId(),is("1"));
+        //assertThat(studentService.queryStudent("").get(1).getUser().getFirstname(),is("Mitsuha"));
+        assertThat(studentService.queryStudent("").get(1).getUser().getLastname(),is("Miyamizu"));
+
+
     }
 }

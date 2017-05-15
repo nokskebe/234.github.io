@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class TestLoginUser {
     private WebDriver driver;
     private String baseUrl;
-
+    private StringBuffer verificationErrors =new StringBuffer();
 
 
     @Before
@@ -34,7 +34,12 @@ public class TestLoginUser {
         driver.findElement(By.id("username")).sendKeys("user");
         driver.findElement(By.id("password")).sendKeys("user");
         driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
-        assertTrue(isElementPresent(By.linkText("Course list")));
+        try {
+            assertTrue(isElementPresent(By.linkText("Course list")));
+        } catch (Error e) {
+
+            verificationErrors.append(e.toString());
+        }
 
     }
 
